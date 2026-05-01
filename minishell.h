@@ -17,9 +17,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <linux/limits.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
+# endif
+# ifndef PATH_MAX
+#  define PATH_MAX 4096
 # endif
 
 typedef unsigned short	u16_t;

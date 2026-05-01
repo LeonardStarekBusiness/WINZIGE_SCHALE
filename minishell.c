@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <linux/limits.h>
-#include <unistd.h>
 
 u16_t	connect_pipes(t_command *top_cmd)
 {
@@ -55,12 +53,12 @@ void	execute(t_command *cmd)
 
 int	main(void)
 {
-	//char *argv[2] = {"3828372872837823782378", "na"};
+	char *argv[1] = {"164"};
 	//t_command exit2 = {"exit", 0, NULL, NULL, 0, 1};
-	t_command exit = {"exit", 0, NULL, NULL, 0, 1};
+	t_command exit = {"exit", 1, argv, NULL, 0, 1};
 
 	if (connect_pipes(&exit))
 		return 1;
 	execute(&exit);
-	return (3);
+	return (0);
 }

@@ -33,16 +33,16 @@ status_t ft_exit(t_command *cmd)
         exit(0);
     if (cmd->ac != 1)
     {
-        ft_putstr_fd("exit: too many arguments\n", cmd->fd_out);
+        ft_putstr_fd("exit: too many arguments\n", 2);
         exit(1);
     }
-    status = (status_t)ft_atoi(cmd->argv[0]);
+    status = (status_t)(ft_atoi(cmd->argv[0]) % 256);
     numberified = ft_itoa(ft_atoi(cmd->argv[0]));
     if (ft_strcmp(numberified, cmd->argv[0]))
     {
         ft_putstr_fd("exit: ", cmd->fd_out);
         ft_putstr_fd(cmd->argv[0], cmd->fd_out);
-        ft_putstr_fd(": numeric argument required\n", cmd->fd_out);
+        ft_putstr_fd(": numeric argument required\n", 2);
         status = 2;
     }
     free(numberified);
