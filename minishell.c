@@ -51,14 +51,22 @@ void	execute(t_command *cmd)
 		execute(cmd->pipe_output_to);
 }
 
-int	main(void)
+/*
+DU WIRST DEN MAIN ENTRY POINT MACHEN
+input parsing und so
+*/
+int	main(int ac, char **av, char **env)
 {
-	char *argv[1] = {"164"};
-	//t_command exit2 = {"exit", 0, NULL, NULL, 0, 1};
-	t_command exit = {"exit", 1, argv, NULL, 0, 1};
+	//hier simuliere ich input (hier gehört der Teil hin wo du input parsed)
+	char *argv[1] = {"hi"};
+	t_command exit3 = {"echo", 1, argv, NULL, 0, 1};
+	t_command exit2 = {"exit", 0, NULL, &exit3, 0, 1};
+	t_command pwd = {"pwd", 0, NULL, &exit2, 0, 1};
 
-	if (connect_pipes(&exit))
+	//mein Teil
+	if (connect_pipes(&pwd))
 		return 1;
-	execute(&exit);
+	execute(&pwd);
+	sleep(3); //to test if exit() actually exits or nah
 	return (0);
 }
